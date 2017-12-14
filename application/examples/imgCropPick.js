@@ -36,7 +36,7 @@ export default class ImageCropPick extends Component {
 	}
 
 	uploadImage(image) {
-		/*RNFetchBlob.fetch('POST'			// method
+		RNFetchBlob.fetch('POST'			// method
 			, uploadService
 			, {
 				Authorization: "buke",
@@ -49,9 +49,7 @@ export default class ImageCropPick extends Component {
 			console.log(error);
 
 			this.setState({ res: 'Error1' });
-		});*/
-
-		this.testFaceApi();
+		});
 
 		this.setState({ res: 'Wait for response！' });
 	}
@@ -66,33 +64,5 @@ export default class ImageCropPick extends Component {
 				/>
 			</View>
 		);
-	}
-
-	testFaceApi() {
-		let requet = {
-			api_key: 'zvJIuD0B3xj5L2c-uHycKQJTNNRjf_Uq',
-			api_secret: 'JSQoT_9MvhrD-65TEnBtoNdGjkXCJb7b'
-		};
-
-		let formData = new FormData();
-
-		Object.entries(request).forEach((entry) => {
-			formData.append(...entry);
-		});
-		
-		fetch(faceSetCreate, {
-			method: 'POST',
-			body: formData
-		}).then((response) =>{
-			this.setState({ 
-				res: 'OK'
-			});
-
-			//console.log(response.json());
-		}).catch((error) => {
-			console.log(error);
-
-			//this.setState({ res: 'Error1' });
-		});
 	}
 }

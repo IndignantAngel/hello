@@ -11,7 +11,7 @@ import { Button } from 'react-native-elements';
 export default class Examples extends Component {
 	
 	static navigationOptions = {
-    header: null,
+    header: <View/>,
   };
 	
 	render() {
@@ -40,6 +40,14 @@ export default class Examples extends Component {
 				<Button 
 					onPress = { () => this.props.navigation.navigate('imageAdvExample') }
 					title='Image advanced example.'
+				/>
+				<Button 
+					onPress = { () => this.props.navigation.navigate('faceppExample') }
+					title='Face plus plus example.'
+				/>
+				<Button 
+					onPress = { () => this.props.navigation.navigate('audioExample') }
+					title='Audio Example'
 				/>
 			</View>
 		);

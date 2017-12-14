@@ -50,6 +50,18 @@
 		F7B05EDD3F114DEDB736BD84 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26FF0EA56CD2492B8695E3B4 /* Octicons.ttf */; };
 		183C42EAFCC04276B6D69236 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FDBD88C4A1E7440B93B256A1 /* SimpleLineIcons.ttf */; };
 		C5BFAB20927F46F89A7CFA05 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7608DD8EA56749738C441D83 /* Zocial.ttf */; };
+		2E64D5EB71B24C5F88AC2AF9 /* libAuroraIMUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A31D1CF2FD04DCBB5B6DAA5 /* libAuroraIMUI.a */; };
+		9A3BF184B2ED4CA5810858D5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CC4E0CF8F42148C6316CD /* libz.tbd */; };
+		FE15BEC5518444D58B231E37 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5F88298080474AB3E4673C /* CoreTelephony.framework */; };
+		F9403E58317347A9AF917A86 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBE45E6AE1A4F90B753CFB8 /* CFNetwork.framework */; };
+		135A6449F04543988C78256C /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E683372591942BCA96186C1 /* CoreFoundation.framework */; };
+		54D7C3523F9D4D4CACE163AF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECABBA132AB04176B304710B /* SystemConfiguration.framework */; };
+		D613D8A168B64B24850C904A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E47E62267648C5AE7F1A8F /* Foundation.framework */; };
+		FD690CB50149425F888D37E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF7797F3EC964DDA9CF60FD4 /* UIKit.framework */; };
+		5CC2688DF2944696B20CAA4A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EB13EF47AF74D938F76BF5F /* CoreGraphics.framework */; };
+		0B4ADFF4320B490E8E240AA3 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C873124E104368A8F422BD /* libAirMaps.a */; };
+		42E67AFDFEAA461CB42191F2 /* libRNAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0558AD7F290147228F99C005 /* libRNAudio.a */; };
+		2837E5BB95D945A587A6A20A /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D61FE5C1E1FE4436B772C44B /* libRNSound.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -294,6 +306,22 @@
 		26FF0EA56CD2492B8695E3B4 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		FDBD88C4A1E7440B93B256A1 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		7608DD8EA56749738C441D83 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B10383CD9D014177B8D72091 /* RCTAuroraIMUI.xcodeproj */ = {isa = PBXFileReference; name = "RCTAuroraIMUI.xcodeproj"; path = "../node_modules/aurora-imui-react-native/ReactNative/ios/RCTAuroraIMUI.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		4A31D1CF2FD04DCBB5B6DAA5 /* libAuroraIMUI.a */ = {isa = PBXFileReference; name = "libAuroraIMUI.a"; path = "libAuroraIMUI.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		7B4CC4E0CF8F42148C6316CD /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		2D5F88298080474AB3E4673C /* CoreTelephony.framework */ = {isa = PBXFileReference; name = "CoreTelephony.framework"; path = "System/Library/Frameworks/CoreTelephony.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		BFBE45E6AE1A4F90B753CFB8 /* CFNetwork.framework */ = {isa = PBXFileReference; name = "CFNetwork.framework"; path = "System/Library/Frameworks/CFNetwork.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		6E683372591942BCA96186C1 /* CoreFoundation.framework */ = {isa = PBXFileReference; name = "CoreFoundation.framework"; path = "System/Library/Frameworks/CoreFoundation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		ECABBA132AB04176B304710B /* SystemConfiguration.framework */ = {isa = PBXFileReference; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		92E47E62267648C5AE7F1A8F /* Foundation.framework */ = {isa = PBXFileReference; name = "Foundation.framework"; path = "System/Library/Frameworks/Foundation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		EF7797F3EC964DDA9CF60FD4 /* UIKit.framework */ = {isa = PBXFileReference; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		7EB13EF47AF74D938F76BF5F /* CoreGraphics.framework */ = {isa = PBXFileReference; name = "CoreGraphics.framework"; path = "System/Library/Frameworks/CoreGraphics.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		7EF5937E8BE74FC1BA92EADE /* AirMaps.xcodeproj */ = {isa = PBXFileReference; name = "AirMaps.xcodeproj"; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		38C873124E104368A8F422BD /* libAirMaps.a */ = {isa = PBXFileReference; name = "libAirMaps.a"; path = "libAirMaps.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		0ECD2994AB404177BB859B7E /* RNAudio.xcodeproj */ = {isa = PBXFileReference; name = "RNAudio.xcodeproj"; path = "../node_modules/react-native-audio/ios/RNAudio.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		0558AD7F290147228F99C005 /* libRNAudio.a */ = {isa = PBXFileReference; name = "libRNAudio.a"; path = "libRNAudio.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		86A2A8C25503406A8266F63A /* RNSound.xcodeproj */ = {isa = PBXFileReference; name = "RNSound.xcodeproj"; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		D61FE5C1E1FE4436B772C44B /* libRNSound.a */ = {isa = PBXFileReference; name = "libRNSound.a"; path = "libRNSound.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +353,18 @@
 				9F7BE863445C467BB56E8A95 /* libimageCropPicker.a in Frameworks */,
 				D6E596CCFCE048758E4F486C /* libRNFetchBlob.a in Frameworks */,
 				4403047586854D01B7E2F8B5 /* libRNVectorIcons.a in Frameworks */,
+				2E64D5EB71B24C5F88AC2AF9 /* libAuroraIMUI.a in Frameworks */,
+				9A3BF184B2ED4CA5810858D5 /* libz.tbd in Frameworks */,
+				FE15BEC5518444D58B231E37 /* CoreTelephony.framework in Frameworks */,
+				F9403E58317347A9AF917A86 /* CFNetwork.framework in Frameworks */,
+				135A6449F04543988C78256C /* CoreFoundation.framework in Frameworks */,
+				54D7C3523F9D4D4CACE163AF /* SystemConfiguration.framework in Frameworks */,
+				D613D8A168B64B24850C904A /* Foundation.framework in Frameworks */,
+				FD690CB50149425F888D37E1 /* UIKit.framework in Frameworks */,
+				5CC2688DF2944696B20CAA4A /* CoreGraphics.framework in Frameworks */,
+				0B4ADFF4320B490E8E240AA3 /* libAirMaps.a in Frameworks */,
+				42E67AFDFEAA461CB42191F2 /* libRNAudio.a in Frameworks */,
+				2837E5BB95D945A587A6A20A /* libRNSound.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +536,10 @@
 				CF6BD96EB4974805BCA9D981 /* imageCropPicker.xcodeproj */,
 				B386CB9173C344F099DBB088 /* RNFetchBlob.xcodeproj */,
 				A27263660F2B4AC8A6D3DB89 /* RNVectorIcons.xcodeproj */,
+				B10383CD9D014177B8D72091 /* RCTAuroraIMUI.xcodeproj */,
+				7EF5937E8BE74FC1BA92EADE /* AirMaps.xcodeproj */,
+				0ECD2994AB404177BB859B7E /* RNAudio.xcodeproj */,
+				86A2A8C25503406A8266F63A /* RNSound.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -517,6 +561,7 @@
 				00E356EF1AD99517003FC87E /* helloTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				4742E42E60D24BEABA542B0E /* Resources */,
+				8CFB0CFA6B62460CA54CA825 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -558,6 +603,22 @@
 				7608DD8EA56749738C441D83 /* Zocial.ttf */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+			path = "";
+		};
+		8CFB0CFA6B62460CA54CA825 /* Frameworks */ = {
+			isa = "PBXGroup";
+			children = (
+				7B4CC4E0CF8F42148C6316CD /* libz.tbd */,
+				2D5F88298080474AB3E4673C /* CoreTelephony.framework */,
+				BFBE45E6AE1A4F90B753CFB8 /* CFNetwork.framework */,
+				6E683372591942BCA96186C1 /* CoreFoundation.framework */,
+				ECABBA132AB04176B304710B /* SystemConfiguration.framework */,
+				92E47E62267648C5AE7F1A8F /* Foundation.framework */,
+				EF7797F3EC964DDA9CF60FD4 /* UIKit.framework */,
+				7EB13EF47AF74D938F76BF5F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 			path = "";
 		};
@@ -1077,12 +1138,20 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-image-crop-picker\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\aurora-imui-react-native\iOS\IMUIMessageCollectionView/**",
+					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-audio\ios",
+					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 				);
 			};
 			name = Debug;
@@ -1106,12 +1175,20 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-image-crop-picker\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\aurora-imui-react-native\iOS\IMUIMessageCollectionView/**",
+					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-audio\ios",
+					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 				);
 			};
 			name = Release;
@@ -1136,6 +1213,10 @@
 					"$(SRCROOT)\..\node_modules\react-native-image-crop-picker\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\aurora-imui-react-native\iOS\IMUIMessageCollectionView/**",
+					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-audio\ios",
+					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 				);
 			};
 			name = Debug;
@@ -1159,6 +1240,10 @@
 					"$(SRCROOT)\..\node_modules\react-native-image-crop-picker\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\aurora-imui-react-native\iOS\IMUIMessageCollectionView/**",
+					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-audio\ios",
+					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 				);
 			};
 			name = Release;
@@ -1191,12 +1276,20 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-image-crop-picker\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\aurora-imui-react-native\iOS\IMUIMessageCollectionView/**",
+					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-audio\ios",
+					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 				);
 			};
 			name = Debug;
@@ -1229,12 +1322,20 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-image-crop-picker\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\aurora-imui-react-native\iOS\IMUIMessageCollectionView/**",
+					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-audio\ios",
+					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 				);
 			};
 			name = Release;
@@ -1262,6 +1363,10 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1286,6 +1391,10 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

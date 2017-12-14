@@ -8,6 +8,8 @@ import ChatExample from './examples/chatExample';
 import PlaceholderExample from './examples/placeholderExample';
 import WebViewExample from './examples/webView';
 import ImageAdvExample from './examples/imageAdv';
+import FacePPExample from './examples/faceppExample';
+import AudioExample from './examples/audioExample';
 
 export const Root = StackNavigator({
 	examples : {
@@ -30,5 +32,11 @@ export const Root = StackNavigator({
 	},
 	imageAdvExample: {
 		screen: ImageAdvExample
+	},
+	faceppExample: {
+		screen: FacePPExample
+	},
+	audioExample: {
+		screen: AudioExample
 	}
 });
