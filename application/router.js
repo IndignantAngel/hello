@@ -10,6 +10,7 @@ import WebViewExample from './examples/webView';
 import ImageAdvExample from './examples/imageAdv';
 import FacePPExample from './examples/faceppExample';
 import AudioExample from './examples/audioExample';
+import SoundExample from './examples/soundExample';
 
 export const Root = StackNavigator({
 	examples : {
@@ -38,5 +39,8 @@ export const Root = StackNavigator({
 	},
 	audioExample: {
 		screen: AudioExample
+	},
+	soundExample: {
+		screen: SoundExample
 	}
 });

@@ -49,6 +49,10 @@ export default class Examples extends Component {
 					onPress = { () => this.props.navigation.navigate('audioExample') }
 					title='Audio Example'
 				/>
+				<Button 
+					onPress = { () => this.props.navigation.navigate('soundExample') }
+					title='Sound Example'
+				/>
 			</View>
 		);
 	}

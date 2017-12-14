@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import {
   Text,
   View,
+  StyleSheet,
   ScrollView
 } from 'react-native';
 import { Avatar } from 'react-native-elements'
-
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class AvatarExample extends Component {
 	
@@ -13,6 +14,14 @@ class AvatarExample extends Component {
 		title: 'Avatar example',
 	};
 	
+	state = { messageType: 'text' };
+
+	getIconName = () => {
+		if(this.messageType == 'text')
+			return 'record-voice-over';
+		return 'keyboard';
+	}
+
 	render() {
 		return (
 			<ScrollView>
@@ -42,9 +51,32 @@ class AvatarExample extends Component {
 					onPress={() => console.log("Works!")}
 					activeOpacity={0.7}
 				/>
+				<View style={styles.wrapper}>
+					<Icon name={ this.getIconName() } size={18} color="#b2b2b2"/>
+				</View>
 			</ScrollView>
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+	wrapper: {
+	  borderRadius: 15,
+	  borderColor: '#b2b2b2',
+	  borderWidth: 1,
+	  width: 30,
+	  height: 30,
+	  justifyContent: 'center',
+	  alignItems: 'center',
+	},
+	icon: {
+	  color: '#b2b2b2',
+	  fontWeight: 'bold',
+	  fontSize: 16,
+	  backgroundColor: 'transparent',
+	  textAlign: 'center',
+	  flex: 1,
+	},
+  });
 
 export default AvatarExample;
