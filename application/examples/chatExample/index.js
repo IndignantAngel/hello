@@ -5,10 +5,11 @@ import {
   Text,
   View,
 } from 'react-native';
-
-import {GiftedChat, Actions, Bubble, SystemMessage} from 'react-native-gifted-chat';
+import {Button} from 'react-native-elements';
+import {GiftedChat, Actions, Bubble, SystemMessage, Composer} from 'react-native-gifted-chat';
 import CustomActions from './CustomActions';
 import CustomView from './CustomView';
+import talkBtnStyles from './Styles/talkButtonStyles';
 
 export default class ChatExample extends React.Component {
 
@@ -126,13 +127,64 @@ export default class ChatExample extends React.Component {
     });
   }
 
+  /**************************************************************************
+  ****************************** ACTION begin *******************************
+  **************************************************************************/
+  onPressAction = () => {
+    let { messageType } = this.state;
+
+    switch(messageType) {
+    case 'text':
+      messageType = 'voice';
+      break;
+    case 'voice':
+      messageType = 'text';
+      break;
+    default:
+      break;
+    }
+    
+    this.setState({ messageType });
+  }
+
+  getActionIcon = () => {
+    if(this.state.messageType == 'text')
+      return 'record-voice-over';
+    return 'keyboard';
+  }
+
   renderCustomActions = (props) => {
     return (
         <CustomActions
           {...props}
+          getIcon={this.getActionIcon}
+          onPress={this.onPressAction}
         />
     );
   }
+  /**************************************************************************
+  ****************************** ACTION end *********************************
+  **************************************************************************/
+
+  /**************************************************************************
+  ****************************** INPUT begin ********************************
+  **************************************************************************/
+
+  renderComposer = (props) =>{
+    const {messageType} = this.state;
+    if(messageType === 'text')
+      return (
+        <Composer {...props}/>
+      );
+    else if(messageType == 'voice')
+      return (
+        <Button title='Press to talk...' containerViewStyle={{height: 41, marginTop: 3}}  buttonStyle={talkBtnStyles.talkButton}/>
+      );
+  }
+
+  /**************************************************************************
+  ****************************** INPUT end **********************************
+  **************************************************************************/
 
   renderBubble = (props) => {
     return (
@@ -186,6 +238,7 @@ export default class ChatExample extends React.Component {
         renderBubble={this.renderBubble}
         renderSystemMessage={this.renderSystemMessage}
         renderCustomView={this.renderCustomView}
+        renderComposer={this.renderComposer}
         showUserAvatar={true}
       />
     );

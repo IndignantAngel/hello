@@ -3,7 +3,8 @@ import {
   Text,
   View,
   StyleSheet,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from 'react-native';
 import { Avatar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -17,9 +18,26 @@ class AvatarExample extends Component {
 	state = { messageType: 'text' };
 
 	getIconName = () => {
-		if(this.messageType == 'text')
+		if(this.state.messageType == 'text')
 			return 'record-voice-over';
 		return 'keyboard';
+	}
+
+	onPressIcon = () => {
+		let { messageType } = this.state;
+
+		switch(messageType) {
+		case 'text':
+			messageType = 'voice';
+			break;
+		case 'voice':
+			messageType = 'text';
+			break;
+		default:
+			break;
+		}
+
+		this.setState({ messageType });
 	}
 
 	render() {
@@ -51,9 +69,11 @@ class AvatarExample extends Component {
 					onPress={() => console.log("Works!")}
 					activeOpacity={0.7}
 				/>
-				<View style={styles.wrapper}>
-					<Icon name={ this.getIconName() } size={18} color="#b2b2b2"/>
-				</View>
+				<TouchableOpacity 
+					style={styles.wrapper}
+					onPress={this.onPressIcon}>
+					<Icon name={ this.getIconName() } size={18} color="#b2b2b2" />
+				</TouchableOpacity>
 			</ScrollView>
 		);
 	}
@@ -76,6 +96,10 @@ const styles = StyleSheet.create({
 	  backgroundColor: 'transparent',
 	  textAlign: 'center',
 	  flex: 1,
+	},
+	button: {
+		width: 30,
+		height: 30,
 	},
   });
 
