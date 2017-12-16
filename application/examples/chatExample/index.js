@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 import {Button} from 'react-native-elements';
+import TalkButton from './Component/talkButton';
 import {GiftedChat, Actions, Bubble, SystemMessage, Composer} from 'react-native-gifted-chat';
 import CustomActions from './CustomActions';
 import CustomView from './CustomView';
@@ -24,7 +25,8 @@ export default class ChatExample extends React.Component {
       loadEarlier: true,
       typingText: null,
       isLoadingEarlier: false,
-      messageType: 'text'
+      messageType: 'text',
+      layout: null,
     };
 
     this._isMounted = false;
@@ -178,7 +180,8 @@ export default class ChatExample extends React.Component {
       );
     else if(messageType == 'voice')
       return (
-        <Button title='Press to talk...' containerViewStyle={{height: 41, marginTop: 3}}  buttonStyle={talkBtnStyles.talkButton}/>
+        //<Button title='Press to talk...' containerViewStyle={{height: 41, marginTop: 3}}  buttonStyle={talkBtnStyles.talkButton}/>
+        <TalkButton/>
       );
   }
 
@@ -221,26 +224,46 @@ export default class ChatExample extends React.Component {
     );
   }
 
+  /* talk promp begin*/
+  onLayout = (event) => {
+    //let {x, y, width, height} = event.nativeEvent.layout;
+    //this.setState({layout: {x, y, width, height}});
+    //console.log(event.nativeEvent.layout)
+  }
+
+  /* talk promp end*/
+
   render() {
+    const prompSize = 200;
+    //const {x, y , width, height} = this.state.layout;
+
+    //let leftValue = (width - prompSize) / 2;
+    //let topValue = (height - prompSize) / 2;
+    let translateX = 100;
+    let translateY = 50;
+
     return (
-      <GiftedChat
-        messages={this.state.messages}
-        onSend={this.onSend}
-        loadEarlier={this.state.loadEarlier}
-        onLoadEarlier={this.onLoadEarlier}
-        isLoadingEarlier={this.state.isLoadingEarlier}
+      <View style={{flex: 1}}>  
+        <GiftedChat
+          messages={this.state.messages}
+          onSend={this.onSend}
+          loadEarlier={this.state.loadEarlier}
+          onLoadEarlier={this.onLoadEarlier}
+          isLoadingEarlier={this.state.isLoadingEarlier}
 
-        user={{
-          _id: 1, // sent messages should have same user._id
-        }}
+          user={{
+            _id: 1, // sent messages should have same user._id
+          }}
 
-        renderActions={this.renderCustomActions}
-        renderBubble={this.renderBubble}
-        renderSystemMessage={this.renderSystemMessage}
-        renderCustomView={this.renderCustomView}
-        renderComposer={this.renderComposer}
-        showUserAvatar={true}
-      />
+          renderActions={this.renderCustomActions}
+          renderBubble={this.renderBubble}
+          renderSystemMessage={this.renderSystemMessage}
+          renderCustomView={this.renderCustomView}
+          renderComposer={this.renderComposer}
+          showUserAvatar={true}
+        />
+        <Button title='Hello' containerViewStyle={{position: 'absolute', transform:[ {translateX}, {translateY} ]}} />
+      </View>
     );
   }
 }
