@@ -14,7 +14,7 @@ export default class TalkButton extends Component {
         onGrant: PropTypes.func,
         onRelease: PropTypes.func,
         onCancle: PropTypes.func,
-      };
+    };
 
     constructor(props) {
         super(props);
@@ -65,7 +65,7 @@ export default class TalkButton extends Component {
             this.setState(state);
 
             if(this.props.onRelease)
-                this.props.onRelease;
+                this.props.onRelease();
         
     }
 
