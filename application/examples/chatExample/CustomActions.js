@@ -30,7 +30,7 @@ export default class CustomActions extends React.Component {
         style={styles.wrapper}
         onPress={onPress}
       >
-        <Icon name={ getIcon() } size={18} color="#b2b2b2" />
+        <Icon name={ getIcon() } size={18} color="#b2b2b2"/>
       </TouchableOpacity>
     );
   }

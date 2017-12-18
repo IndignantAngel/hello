@@ -47,6 +47,7 @@ class AudioExample extends Component {
         this.prepareRecordingPath(this.state.audioPath);
 
         AudioRecorder.onProgress = (data) => {
+          console.log(data);
           this.setState({currentTime: Math.floor(data.currentTime)});
         };
 

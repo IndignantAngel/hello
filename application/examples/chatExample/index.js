@@ -30,6 +30,7 @@ export default class ChatExample extends React.Component {
       messageType: 'text',
       layout: null,
       showIndicator: false,
+      talkCancle: false,
     };
 
     this._isMounted = false;
@@ -180,7 +181,7 @@ export default class ChatExample extends React.Component {
   }
 
   onReleaseTalkButton = () => {
-    this.setState({showIndicator: false});
+    this.setState({showIndicator: false, talkCancle: false});
   }
 
   renderComposer = (props) =>{
@@ -193,7 +194,8 @@ export default class ChatExample extends React.Component {
       return (
         <TalkButton 
           onGrant={this.onPressTalkButton} 
-          onRelease={this.onReleaseTalkButton}/>
+          onRelease={this.onReleaseTalkButton}
+          onCancle={this.onTalkCancle}/>
       );
   }
 
@@ -241,6 +243,10 @@ export default class ChatExample extends React.Component {
     let {width, height} = event.nativeEvent.layout;
     this.setState({layout: {width, height}});
   }
+
+  onTalkCancle = (talkCancle) => {
+    this.setState({talkCancle});
+  }
   /* talk promp end*/
 
   render() {
@@ -265,7 +271,11 @@ export default class ChatExample extends React.Component {
           renderComposer={this.renderComposer}
           showUserAvatar={true}
         />
-        <TalkIndicator layout={this.state.layout} show={this.state.showIndicator}/>
+        <TalkIndicator 
+          layout={this.state.layout} 
+          show={this.state.showIndicator}
+          cancle={this.state.talkCancle}
+        />
       </View>
     );
   }
