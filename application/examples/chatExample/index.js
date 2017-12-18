@@ -11,7 +11,7 @@ import TalkIndicator from './Component/talkIndicator';
 
 import {GiftedChat, Actions, Bubble, SystemMessage, Composer} from 'react-native-gifted-chat';
 import CustomActions from './CustomActions';
-import CustomView from './CustomView';
+import CustomView from './Component/customView';
 import talkBtnStyles from './Styles/talkButtonStyles';
 
 export default class ChatExample extends React.Component {
