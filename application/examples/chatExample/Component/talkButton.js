@@ -13,14 +13,14 @@ export default class TalkButton extends Component {
     static propTypes = {
         onGrant: PropTypes.func,
         onRelease: PropTypes.func,
-        onCancle: PropTypes.func,
+        onCancel: PropTypes.func,
     };
 
     constructor(props) {
         super(props);
         this.state = {
             isPressed: false,
-            isCancle: false,
+            isCancel: false,
             position: {x: 0, y: 0},
         };
     }
@@ -46,14 +46,14 @@ export default class TalkButton extends Component {
         let offsetX = pageX - state.position.x; 
         let offsetY = pageY - state.position.y;
         let offsetMagnitude = offsetX * offsetX + offsetY * offsetY;
-        let isCancleValue = offsetMagnitude > theMagnitude;
+        let isCancelValue = offsetMagnitude > theMagnitude;
 
-        if(isCancleValue ^ state.isCancle) {
-            state.isCancle = isCancleValue;
+        if(isCancelValue ^ state.isCancel) {
+            state.isCancel = isCancelValue;
             this.setState(state);
 
-            if(this.props.onCancle)
-                this.props.onCancle(isCancleValue);
+            if(this.props.onCancel)
+                this.props.onCancel(isCancelValue);
         }
     }
 
@@ -61,7 +61,7 @@ export default class TalkButton extends Component {
         let state = this.state;
         
             state.isPressed = false;
-            state.isCancle = false;
+            state.isCancel = false;
             this.setState(state);
 
             if(this.props.onRelease)
@@ -72,7 +72,7 @@ export default class TalkButton extends Component {
     getText (){
         let state = this.state;
         if(state.isPressed) {
-            if(state.isCancle) 
+            if(state.isCancel) 
                 return '松开手指，取消发送';
             else 
                 return '松开 发送';

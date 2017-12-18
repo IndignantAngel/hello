@@ -13,7 +13,7 @@ export default class TalkIndicator extends Component {
     static propTypes = {
         layout: PropTypes.object,
         show: PropTypes.bool,
-        cancle: PropTypes.bool,
+        cancel: PropTypes.bool,
     };
 
     constructor(props) {
@@ -25,11 +25,11 @@ export default class TalkIndicator extends Component {
     }
 
     getText = () => {
-        return this.props.cancle? '松开手指，取消发送' : '手指上划，取消发送';
+        return this.props.cancel? '松开手指，取消发送' : '手指上划，取消发送';
     }
 
     renderIcon = () => {
-        return this.props.cancle? 
+        return this.props.cancel? 
             (<IconFontAwesome name='undo' color='white' size={120} style={styles.icon}/>) :
             (<IconIonicons name='ios-mic' color='white' size={120} style={styles.icon}/>);
     }
@@ -44,14 +44,14 @@ export default class TalkIndicator extends Component {
         let {width, height} = layout;
         let translateX = (width - 200) / 2;
         let translateY = (height - 200) / 2 - 50;
-        let cancle = this.state.cancle;
+        let cancel = this.props.cancel;
 
         return(
             <View style={[styles.container, {transform: [{translateX}, {translateY}], position: 'absolute'}]}>
                 <View style={styles.iconContainer}>
                     {this.renderIcon()}
                 </View>
-                <View style={styles.textContainer}>
+                <View style={[styles.textContainer, cancel? styles.textContainerTalkCancel : null]}>
                     <Text style={styles.text}>{this.getText()}</Text>
                 </View>    
             </View>
@@ -77,9 +77,8 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'red',
     },
-    textContainerPressed: {
+    textContainerTalkCancel: {
         backgroundColor: 'red',
     },
     iconContainer: {
