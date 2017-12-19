@@ -1,4 +1,5 @@
 import React from 'react';
+import {Platform, PermissionsAndroid} from 'react-native';
 import Sound from 'react-native-sound';
 import {AudioRecorder, AudioUtils} from 'react-native-audio';
 
@@ -13,34 +14,98 @@ export default class AudioManager {
             AudioEncodingBitRate: 32000
         };
 
-        this.status = 'disabled';
-        this.currentTime = 0;
+        /*
+         * disabled, ready, prepare, record, stopping
+         */
+        this.audio = {
+            state: 'disabled',
+            length: 0,
+            onFinished: null,
+            onError: null,
+        };
+
+        /*
+         * ready, play, pause, stop
+         */
+        this.sound = {
+            state: 'ready',
+            module: null,
+        };
     }
 
-    init() {
+    init(onRecordFinished, onRecordError) {
+        
+        if(onRecordFinished)
+            this.audio.onFinished = onRecordFinished;
+        if(onRecordError)
+            this.audio.onError = onRecordError;
+
         this.checkPermission().then((hasPermission) => {
             if(!hasPermission) return;
 
             AudioRecorder.onProgress = (data) => {
-                this.currentTime = Math.floor(data.currentTime);
+                this.audio.length = Math.floor(data.currentTime);
             };
-
-            AudioRecorder.onFinished = (data) => {
-                // Android callback comes in the form of a promise instead.
-                if (Platform.OS === 'ios') {
-                  this._finishRecording(data.status === "OK", data.audioFileURL);
-                }
-            };
-
-            this.status = 'enabled';
+            this.audio.state = 'ready';
         });
     }
 
-    prepare(path) {
-        if(this.status === 'disabled')
-            return false;
+    uninit() {
+        this.stopPlay();
+    }
 
-        if()
+    prepareRecordingPath(path) {
+        AudioRecorder.prepareRecordingAtPath(path, this.audioParam);
+    }
+
+    async startRecording(path) {
+
+        const audioPath = AudioUtils.DocumentDirectoryPath + '/' + path;
+
+        switch(this.audio.state) {
+        case 'disabled':
+            console.warn('Can\'t record, no permission granted!');
+            return;
+        case 'ready':
+            break;
+        default:
+            console.warn('Already recording!');
+            return;
+        }
+  
+        this.audio.state = 'prepare';
+        this.prepareRecordingPath(audioPath);
+  
+        try {
+          await AudioRecorder.startRecording();
+          if(this.audio.state === 'prepare')
+            this.audio.state = 'record';
+        } catch (error) {
+          console.error(error);
+        }
+    }
+
+    async stopRecording(cancel) {
+        if(this.audio.state !== 'record' || this.audio.state !== 'prepare')
+            return;
+
+        this.audio.state = 'stopping';
+        try {
+            const path = await AudioRecorder.stopRecording();
+            this.audio.state = 'ready';
+            
+            if(!cancel && this.audio.onFinished)
+            {
+                const length = this.audio.length;  
+                this.audio.onFinished({path, length});
+            }
+                
+        }
+        catch(error) {
+            console.error(error);
+            if(this.audio.onError)
+                this.audio.onError(error);
+        }
     }
 
     checkPermission() {
@@ -60,32 +125,50 @@ export default class AudioManager {
         });
     }
 
-    finishRecording(didSucceed, filePath) {
-        this.status = 'stopRecord';
-        console.log(`Finished recording of duration ${this.state.currentTime} seconds at path: ${filePath}`);
+    onPlayStopped = () => {
+        this.sound.state = 'ready';
     }
 
-    async record() {
-        if (this.state.recording) {
-          console.warn('Already recording!');
-          return;
+    onPlayFinished = (success) => {
+        if (success) {
+            console.log('successfully finished playing');
+          } else {
+            console.log('playback failed due to audio decoding errors');
         }
-  
-        if (!this.state.hasPermission) {
-          console.warn('Can\'t record, no permission granted!');
-          return;
-        }
-  
-        if(this.state.stoppedRecording){
-          this.prepareRecordingPath(this.state.audioPath);
-        }
-  
-        this.setState({recording: true});
-  
-        try {
-          const filePath = await AudioRecorder.startRecording();
-        } catch (error) {
-          console.error(error);
+        this.onPlayStopped();
+    }
+
+    startPlay(path) {
+        stopPlay();
+
+        setTimeout(()=>{
+            var sound = new Sound(path, '', (error) => {
+                if (error) {
+                  console.log('failed to load the sound', error);
+                }
+            });
+            
+            this.sound.state = 'play';
+            this.sound.module = sound;
+            setTimeout(()=>{
+                this.sound.module.play(this.onPlayFinished);
+            }, 100)
+        }, 100)
+    }
+
+    resumePlay() {
+        if(this.sound.state === 'pause')
+            this.sound.module.play(this.onPlayFinished);
+    }
+        
+    stopPlay() {
+        if(this.sound.state !== 'ready')
+            this.sound.module.stop(this.onPlayStopped);
+    }
+        
+    pausePlay() {
+        if(this.sound.state == 'play') {
+            this.sound.module.pause();
         }
     }
 }

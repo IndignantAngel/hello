@@ -13,6 +13,7 @@ import {GiftedChat, Actions, Bubble, SystemMessage, Composer} from 'react-native
 import CustomActions from './CustomActions';
 import CustomView from './Component/customView';
 import talkBtnStyles from './Styles/talkButtonStyles';
+import AudioManager from './Component/audioManager';
 
 export default class ChatExample extends React.Component {
 
@@ -35,6 +36,10 @@ export default class ChatExample extends React.Component {
 
     this._isMounted = false;
     this._isAlright = null;
+    
+    // audio manager instance
+    this.audioModule = new AudioManager();
+    this.longEnough = false;
   }
 
   componentWillMount() {
@@ -44,10 +49,32 @@ export default class ChatExample extends React.Component {
         messages: require('./data/messages.js'),
       };
     });
+
+    this.audioModule.init(
+      (result) => {
+        const {path, length} = result;
+        const message = {
+          _id: Math.round(Math.random() * 1000000),
+          voice: {
+            unread: false,
+            length,
+            path,
+          },
+          user: {
+            _id: 1,
+            name: 'Developer',
+          },
+        };
+
+        this.onSend([message]);
+    }, (error) => {
+      //console.log(error);
+    });
   }
 
   componentWillUnmount() {
     this._isMounted = false;
+    this.audioModule.uninit();
   }
 
   answerDemo(messages) {
@@ -178,10 +205,23 @@ export default class ChatExample extends React.Component {
 
   onPressTalkButton = () => {
     this.setState({showIndicator: true});
+    this.audioModule.startRecording('test.aac');
+
+    this.longEnough = false;
+    setTimeout(() => {this.longEnough = true}, 1000);
   }
 
   onReleaseTalkButton = () => {
     this.setState({showIndicator: false, talkCancel: false});
+    if(this.longEnough)
+      this.audioModule.stopRecording(false);
+    else
+      this.audioModule.stopRecording(true);
+  }
+
+  onTalkCancel = (talkCancel) => {
+    this.setState({talkCancel});
+    this.audioModule.stopRecording(true);
   }
 
   renderComposer = (props) =>{
@@ -242,10 +282,6 @@ export default class ChatExample extends React.Component {
   onLayout = (event) => {
     let {width, height} = event.nativeEvent.layout;
     this.setState({layout: {width, height}});
-  }
-
-  onTalkCancel = (talkCancel) => {
-    this.setState({talkCancel});
   }
   /* talk promp end*/
 

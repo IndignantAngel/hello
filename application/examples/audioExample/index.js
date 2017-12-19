@@ -99,7 +99,6 @@ class AudioExample extends Component {
 
       try {
         const filePath = await AudioRecorder.pauseRecording();
-
         // Pause is currently equivalent to stop on Android.
         if (Platform.OS === 'android') {
           this._finishRecording(true, filePath);
@@ -118,6 +117,7 @@ class AudioExample extends Component {
       this.setState({stoppedRecording: true, recording: false});
 
       try {
+        console.log(filePath);
         const filePath = await AudioRecorder.stopRecording();
 
         if (Platform.OS === 'android') {
