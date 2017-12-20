@@ -52,6 +52,7 @@ export default class ChatExample extends React.Component {
 
     this.audioModule.init(
       (result) => {
+        console.log('onFinished');
         const {path, length} = result;
         const message = {
           _id: Math.round(Math.random() * 1000000),
@@ -64,6 +65,7 @@ export default class ChatExample extends React.Component {
             _id: 1,
             name: 'Developer',
           },
+          createdAt: new Date(),
         };
 
         this.onSend([message]);
@@ -278,6 +280,12 @@ export default class ChatExample extends React.Component {
     );
   }
 
+  onPressBubble = (context, currentMessage) => {
+    console.log({context, currentMessage});
+    if(currentMessage.voice.path)
+      this.audioModule.startPlay(currentMessage.voice.path);
+  }
+
   /* talk promp begin*/
   onLayout = (event) => {
     let {width, height} = event.nativeEvent.layout;
@@ -286,7 +294,6 @@ export default class ChatExample extends React.Component {
   /* talk promp end*/
 
   render() {
-    console.log(this.state);
     return (
       <View style={{flex: 1}} onLayout={this.onLayout}>  
         <GiftedChat
@@ -306,6 +313,7 @@ export default class ChatExample extends React.Component {
           renderCustomView={this.renderCustomView}
           renderComposer={this.renderComposer}
           showUserAvatar={true}
+          onPress={this.onPressBubble}
         />
         <TalkIndicator 
           layout={this.state.layout} 

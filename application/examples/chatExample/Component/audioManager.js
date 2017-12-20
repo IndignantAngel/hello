@@ -61,6 +61,7 @@ export default class AudioManager {
     async startRecording(path) {
 
         const audioPath = AudioUtils.DocumentDirectoryPath + '/' + path;
+        console.log(audioPath);
 
         switch(this.audio.state) {
         case 'disabled':
@@ -78,15 +79,14 @@ export default class AudioManager {
   
         try {
           await AudioRecorder.startRecording();
-          if(this.audio.state === 'prepare')
-            this.audio.state = 'record';
+          this.audio.state = 'record';
         } catch (error) {
           console.error(error);
         }
     }
 
     async stopRecording(cancel) {
-        if(this.audio.state !== 'record' || this.audio.state !== 'prepare')
+        if(this.audio.state !== 'record')
             return;
 
         this.audio.state = 'stopping';
@@ -139,7 +139,7 @@ export default class AudioManager {
     }
 
     startPlay(path) {
-        stopPlay();
+        this.stopPlay();
 
         setTimeout(()=>{
             var sound = new Sound(path, '', (error) => {

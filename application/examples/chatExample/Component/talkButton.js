@@ -59,14 +59,11 @@ export default class TalkButton extends Component {
 
     onPanResponderRelease = (e, gestureState) => {
         let state = this.state;
-        
-            state.isPressed = false;
-            state.isCancel = false;
-            this.setState(state);
-
-            if(this.props.onRelease)
-                this.props.onRelease();
-        
+        state.isPressed = false;
+        state.isCancel = false;
+        this.setState(state);
+        if(this.props.onRelease)
+            this.props.onRelease();
     }
 
     getText (){
