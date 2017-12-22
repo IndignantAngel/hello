@@ -32,6 +32,10 @@ export default class signinForm extends Component {
         }
         this.setState({phone});
     }
+    
+    onPhoneNumberChange1 = (event) => {
+        console.log(event.nativeEvent);
+    }
 
     onPressSignin = () => {
         const {onSignin} = this.props;
@@ -50,6 +54,7 @@ export default class signinForm extends Component {
                 keyboardType="email-address"
                 onSubmitEditing={()=> this.password.focus()}
                 onChangeText={this.onPhoneNumberChange}
+                onChange={this.onPhoneNumberChange1}
                 value= {this.state.phone}
                 keyboardType="phone-pad"
             />

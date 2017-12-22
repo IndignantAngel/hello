@@ -12,7 +12,8 @@ import {
   View
 } from 'react-native';
 
-import { Root } from './router'
+import { Root } from './router';
+import Storage from './examples/storage';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -22,28 +23,28 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component {
+
+  componentWillMount(){
+    Storage.init();
+    //Storage.put('keyboardHeight', 10);
+    Storage.get('keyboardHeight').then((data)=> {
+      console.log(data);
+    }).catch((e)=> {
+      console.log(e);
+    });
+  }
+
+  componentDidMount() {
+    /*Storage.get('keyboardHeight').then((data)=> {
+      console.log(data);
+    }).catch((e)=> {
+      console.log(e);
+    });*/
+  }
+
   render() {
     return (
       <Root/>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
