@@ -1,6 +1,8 @@
 import React from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 
+import SigninView from './examples/signInUp/signinView';
+import SignupView from './examples/signInUp/signupView';
 import Examples from './examples/examples';
 import AvatarExample from './examples/avatarExample';
 import ImageCropPick from './examples/imgCropPick';
@@ -13,6 +15,12 @@ import AudioExample from './examples/audioExample';
 import SoundExample from './examples/soundExample';
 
 export const Root = StackNavigator({
+	signin : {
+		screen: SigninView,
+	},
+	signup : {
+		screen: SignupView,
+	},
 	examples : {
 		screen: Examples
 	},

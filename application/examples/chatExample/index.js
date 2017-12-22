@@ -282,7 +282,7 @@ export default class ChatExample extends React.Component {
 
   onPressBubble = (context, currentMessage) => {
     console.log({context, currentMessage});
-    if(currentMessage.voice.path)
+    if(currentMessage.voice)
       this.audioModule.startPlay(currentMessage.voice.path);
   }
 
