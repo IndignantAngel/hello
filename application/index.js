@@ -27,11 +27,11 @@ export default class App extends Component {
   componentWillMount(){
     Storage.init();
     //Storage.put('keyboardHeight', 10);
-    Storage.get('keyboardHeight').then((data)=> {
+    /*Storage.get('keyboardHeight').then((data)=> {
       console.log(data);
     }).catch((e)=> {
       console.log(e);
-    });
+    });*/
   }
 
   componentDidMount() {

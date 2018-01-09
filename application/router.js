@@ -13,6 +13,8 @@ import ImageAdvExample from './examples/imageAdv';
 import FacePPExample from './examples/faceppExample';
 import AudioExample from './examples/audioExample';
 import SoundExample from './examples/soundExample';
+import FormExample from './examples/formExample';
+import GiftedFormModal from './examples/formExample/GiftedFormModal';
 
 export const Root = StackNavigator({
 	signin : {
@@ -50,5 +52,11 @@ export const Root = StackNavigator({
 	},
 	soundExample: {
 		screen: SoundExample
-	}
+	},
+	formExample: {
+		screen: FormExample
+	},
+	modal: {
+		screen: GiftedFormModal
+	},
 });
