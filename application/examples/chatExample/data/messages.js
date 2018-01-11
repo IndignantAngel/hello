@@ -8,6 +8,7 @@ module.exports = [{
     user: {
       _id: 1,
       name: 'Developer',
+      avatar: 'https://b-ssl.duitang.com/uploads/item/201712/17/20171217134253_Uk8HX.jpeg',
     },
   },{
     _id: Math.round(Math.random() * 1000000),
@@ -16,6 +17,7 @@ module.exports = [{
     user: {
       _id: 1,
       name: 'Developer',
+      avatar: 'https://b-ssl.duitang.com/uploads/item/201712/17/20171217134253_Uk8HX.jpeg',
     },
     sent: true,
     received: true,
@@ -30,6 +32,7 @@ module.exports = [{
     user: {
       _id: 2,
       name: 'React Native',
+      avatar: 'https://b-ssl.duitang.com/uploads/item/201512/13/20151213193432_mGHdA.jpeg',
     },
   },{
     _id: Math.round(Math.random() * 1000000),
@@ -38,6 +41,7 @@ module.exports = [{
     user: {
       _id: 2,
       name: 'React Native',
+      avatar: 'https://b-ssl.duitang.com/uploads/item/201512/13/20151213193432_mGHdA.jpeg',
     },
   },
 ];

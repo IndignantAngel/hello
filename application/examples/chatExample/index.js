@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Platform,
   StyleSheet,
+  Dimensions,
   Text,
   View,
 } from 'react-native';
@@ -40,6 +41,43 @@ export default class ChatExample extends React.Component {
     // audio manager instance
     this.audioModule = new AudioManager();
     this.longEnough = false;
+    this._Socket = null;
+  }
+
+  initWebSocket() {
+
+    this._Socket = new WebSocket('ws://10.0.0.15:8080/ws1st');
+
+    this._Socket.onopen = () => {
+      const protocol = {
+        prot_type: 0,
+        data: {
+          platform: 0,
+          mac: '123',
+          appid: '123',
+          app_version: 'v1.0.0',
+          group_type: 0,
+          topic_id: 123,
+        },
+      };
+
+      console.log(JSON.stringify(protocol));
+      this._Socket.send(JSON.stringify(protocol));
+    }
+
+    this._Socket.onmessage= (e) => {
+      console.log(e.data);
+    }
+
+    this._Socket.onerror = (e) => {
+      // an error occurred
+      console.log(e.message);
+    }
+
+    this._Socket.onclose = (e) => {
+      // connection closed
+      console.log(e);
+    }
   }
 
   componentWillMount() {
@@ -72,11 +110,20 @@ export default class ChatExample extends React.Component {
     }, (error) => {
       //console.log(error);
     });
+
+    // test 
+    const  { width, height } = Dimensions.get('window');
+    console.log({width, height});
+
+    this.initWebSocket();
+    //this.test();
   }
 
   componentWillUnmount() {
     this._isMounted = false;
     this.audioModule.uninit();
+    
+    this._Socket.close();
   }
 
   answerDemo(messages) {
@@ -140,6 +187,13 @@ export default class ChatExample extends React.Component {
         messages: GiftedChat.append(previousState.messages, messages),
       };
     });
+
+    const protocol = {
+      prot_type: 1,
+      data: 'I wanna fuck zwx.',
+    };
+
+    //this._Socket.send(JSON.stringify(protocol));
 
     // for demo purpose
     this.answerDemo(messages);
@@ -313,7 +367,7 @@ export default class ChatExample extends React.Component {
           renderCustomView={this.renderCustomView}
           renderComposer={this.renderComposer}
           showUserAvatar={true}
-          onPress={this.onPressBubble}
+          onPressBubble={this.onPressBubble}
         />
         <TalkIndicator 
           layout={this.state.layout} 
