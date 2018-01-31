@@ -16,6 +16,7 @@ import SoundExample from './examples/soundExample';
 import FormExample from './examples/formExample';
 import GiftedFormModal from './examples/formExample/GiftedFormModal';
 import SimpleChatExample from './examples/simplechat';
+import EmojiExample from './examples/emojiExample';
 
 export const Root = StackNavigator({
 	signin : {
@@ -62,5 +63,8 @@ export const Root = StackNavigator({
 	},
 	simpleChat: {
 		screen: SimpleChatExample
+	},
+	emoji : {
+		screen: EmojiExample
 	},
 });

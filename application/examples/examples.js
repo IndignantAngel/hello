@@ -106,6 +106,10 @@ export default class Examples extends Component {
 					onPress = { () => this.props.navigation.navigate('simpleChat') }
 					title='Simple Chat'
 				/>
+				<Button
+					onPress = { () => this.props.navigation.navigate('emoji') }
+					title='Simple Emoji'
+				/>
 			</View>
 		);
 	}
