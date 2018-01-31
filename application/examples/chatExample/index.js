@@ -46,7 +46,7 @@ export default class ChatExample extends React.Component {
 
   initWebSocket() {
 
-    this._Socket = new WebSocket('ws://10.0.0.15:8080/ws1st');
+    this._Socket = new WebSocket('ws://10.0.0.15:8080/wsconvr');
 
     this._Socket.onopen = () => {
       const protocol = {
@@ -58,6 +58,7 @@ export default class ChatExample extends React.Component {
           app_version: 'v1.0.0',
           group_type: 0,
           topic_id: 123,
+          user_id: 1,
         },
       };
 
@@ -70,12 +71,10 @@ export default class ChatExample extends React.Component {
     }
 
     this._Socket.onerror = (e) => {
-      // an error occurred
       console.log(e.message);
     }
 
     this._Socket.onclose = (e) => {
-      // connection closed
       console.log(e);
     }
   }
@@ -115,7 +114,7 @@ export default class ChatExample extends React.Component {
     const  { width, height } = Dimensions.get('window');
     console.log({width, height});
 
-    this.initWebSocket();
+    //this.initWebSocket();
     //this.test();
   }
 
@@ -193,7 +192,7 @@ export default class ChatExample extends React.Component {
       data: 'I wanna fuck zwx.',
     };
 
-    //this._Socket.send(JSON.stringify(protocol));
+    this._Socket.send(JSON.stringify(protocol));
 
     // for demo purpose
     this.answerDemo(messages);
