@@ -15,13 +15,13 @@ export default class EmojiExample extends Component {
     <View style={{flex: 1,}}>
       <Swiper style={{flex: 1}} showsButton={true}>
         <View style={styles.container}>
-          <Text style={{fontSize: 50}}><Emoji name="coffee"/></Text>
+          <Text style={{fontSize: 50}}><Emoji name="kissing_heart"/></Text>
         </View>
         <View style={styles.container}>
           <Text style={{fontSize: 50}}><Emoji name="sob"/></Text>
         </View>
         <View style={styles.container}>
-          <Text style={{fontSize: 50}}><Emoji name="laughing"/></Text>
+          <Text style={{fontSize: 50}}><Emoji name="right_anger_bubble"/></Text>
         </View>
       </Swiper>  
     </View>)

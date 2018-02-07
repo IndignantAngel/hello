@@ -5,6 +5,7 @@ import {
   Dimensions,
   Text,
   KeyboardAvoidingView,
+  Keyboard,
   StyleSheet,
   TextInput,
 } from 'react-native';
@@ -16,6 +17,8 @@ export default class SimpleChatExample extends React.Component {
   }
 
   componentWillMount() {
+    this._KeyboardDidHideListener = 
+      Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
     this.setState({
       messages: [
         {
@@ -32,6 +35,10 @@ export default class SimpleChatExample extends React.Component {
     })
   }
 
+  componentWillUnmount() {    
+    this._KeyboardDidHideListener.remove();
+  }
+
   onSend(messages = []) {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
@@ -40,11 +47,11 @@ export default class SimpleChatExample extends React.Component {
 
   render() {
     return (
-      <ScrollView style={{flex: 1}} 
+      <ScrollView ref={c=> {this._scrollView = c;}} style={{flex: 1}} 
         canCancelContentTouches={false} 
         scrollEnabled={false}
         keyboardShouldPersistTaps='handled'>
-        <View style={{height: 564}}>
+        <View style={{height: 831}}>
         <GiftedChat
           messages={this.state.messages}
           onSend={messages => this.onSend(messages)}
@@ -56,6 +63,10 @@ export default class SimpleChatExample extends React.Component {
         </View>
       </ScrollView>
     )
+  }
+
+  _keyboardDidHide = ()=> {
+    this._scrollView.scrollTo({x: 0, y: 0, animated: true});
   }
 }
 

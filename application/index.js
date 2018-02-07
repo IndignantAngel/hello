@@ -4,7 +4,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component, cloneElement } from 'react';
 import {
   Platform,
   StyleSheet,

@@ -8,6 +8,7 @@ import {
 import { Button } from 'react-native-elements';
 import ImagePicker from 'react-native-image-crop-picker';
 import RNFetchBlob from 'react-native-fetch-blob';
+import RNFS from 'react-native-fs';
 
 const uploadService = 'http://10.0.0.10:8080/file/upload';
 const downloadService = 'http://10.0.0.15:8080/file/download?file_name=1.mp4&mime=video/mp4';
@@ -27,14 +28,16 @@ export default class ImageCropPick extends Component {
 
 	onPress() {
 		ImagePicker.openPicker({
-				mediaType: "image",
+			compressImageMaxWidth: 400,
+      compressImageMaxHeight: 300,
+      compressImageQuality: 0.3,
+      mediaType: 'photo',
 			}).then(image => {
-				console.log(image);
-
 				const index = image.path.lastIndexOf('/');
 				const file_name = image.path.substr(index + 1);
-				console.log(file_name);
-				this.uploadImage(image.size, image.path, file_name);
+				console.log(image);
+				RNFS.readFile(image.path, 'base64').then((content)=> console.log(content));
+				//this.uploadImage(image.size, image.path, file_name);
 			}).catch(e=> {
 				console.log(e);
 			});
